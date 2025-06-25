@@ -1,0 +1,11 @@
+#root {
+  margin: 0 auto;
+  padding-block: 2rem;
+  text-align: center;
+  display: flex;
+  min-height: 100svh;
+  flex-direction: column;
+}
+
+
+
