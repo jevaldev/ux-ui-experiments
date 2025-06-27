@@ -1,10 +1,24 @@
 import "./App.css";
-import { useTheme } from "./context/useTheme";
-import { Link, Route, Switch } from "wouter";
-import Page2 from "./Page2.tsx";
+import { useTheme } from "./context";
+import { Route, Switch } from "wouter";
+import Ejemplos from "./Ejemplos.tsx";
+import { Button } from "./components/atoms/Button.tsx";
+import { NavLink } from "./components/atoms/NavLink.tsx";
+import Home from "./Home.tsx";
 
 function App() {
   const { theme, toggleTheme } = useTheme();
+
+  const NavLinks = [
+    {
+      text: "Home",
+      href: "/",
+    },
+    {
+      text: "Ejemplos",
+      href: "/Ejemplos",
+    },
+  ];
 
   if (theme === "dark") {
     document.documentElement.classList.add("dark");
@@ -16,30 +30,19 @@ function App() {
 
   return (
     <>
-      <header className="flex w-[1280px] justify-between items-center gap-4 grow-1">
-        <h1 className="text-3xl ">Jevaldev</h1>
+      <header className="flex w-[1280px] mx-auto justify-between items-center gap-4 grow-1">
+        <h1 className="text-3xl font-bold">Jevaldev</h1>
         <div className="flex items-center gap-4">
-          <button onClick={toggleTheme} className={`button-${theme}`}>
-            Cambiar tema {theme === "light" ? "obscuro" : "claro"}
-          </button>
+          <Button
+            text={`Cambiar tema a ${theme === "light" ? "obscuro" : "claro"}`}
+            onClickFun={toggleTheme}
+            theme={theme}
+          />
           <nav>
             <ul className="flex gap-4">
-              <li>
-                <Link
-                  className={(active) => (active ? `active-${theme}` : "")}
-                  href="/"
-                >
-                  Inicio
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className={(active) => (active ? `active-${theme}` : "")}
-                  href="/Page2"
-                >
-                  Página 2
-                </Link>
-              </li>
+              {NavLinks.map((link) => (
+                <NavLink href={link.href} text={link.text} theme={theme} />
+              ))}
             </ul>
           </nav>
         </div>
@@ -47,13 +50,11 @@ function App() {
 
       <Switch>
         <Route path="/">
-          <h2 className="flex-grow flex justify-center items-center">
-            Hola mundo
-          </h2>
+          <Home />
         </Route>
 
-        <Route path="/Page2">
-          <Page2 />
+        <Route path="/Ejemplos">
+          <Ejemplos />
         </Route>
       </Switch>
     </>

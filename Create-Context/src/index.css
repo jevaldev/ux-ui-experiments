@@ -6,9 +6,15 @@
   --light-color: #E0E1DD;
   --dark-color: #0D1B2A;
 
-  --primary-color-200: #778DA9;
+  --primary-color-100: #EBF1F4;
+  --primary-color-200: #C3D5DE;
+  --primary-color-400: #778DA9;
   --primary-color-500: #415A77;
   --primary-color-700: #1B263B;
+
+  --secondary-color-200: #a8dadc;
+  --secondary-color-400: #457b9d;
+  --secondary-color-700: #1d3557;
 
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -26,11 +32,11 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: var(--secondary-color-400);
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  color: var(--secondary-color-700);
 }
 
 body {
@@ -39,11 +45,28 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100svh;
+  font-size: 1.125rem;
 }
 
 .dark {
   color: var(--light-color);
   background-color: var(--dark-color);
+
+  p {
+    color: var(--primary-color-200);
+  };
+
+  strong {
+    color: var(--primary-color-100);
+  }
+
+  a {
+    color: var(--secondary-color-200);
+  }
+
+  a:hover {
+    color: var(--secondary-color-400);
+  }
 }
 
 h1 {
@@ -73,11 +96,11 @@ button {
   color: var(--light-color);
 }
 
-.active-dark {
-  color: var(--light-color);
+a.active-dark {
+  color: var(--light-color) !important;
 }
 
-.active-light {
+a.active-light {
   color: var(--dark-color);
 }
 
@@ -89,15 +112,33 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: var(--dark-color);
-    background-color: var(--light-color);
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+
+h2,h3 {
+  margin-block: 1rem;
+}
+
+.disclaimer-dark {
+  background-color: var(--primary-color-700);
+  padding: 2rem;
+  border-left: 6px solid var(--primary-color-200);
+}
+
+.disclaimer-light {
+  background-color: var(--primary-color-100);
+  padding: 2rem;
+  border-left: 6px solid var(--primary-color-700);
+}
+
+pre {
+  background-color: var(--primary-color-700);
+  color: #d4d4d4;
+  padding: 16px;
+  overflow-x: auto;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  white-space: pre;
+}
+
+small {
+  color: var(--primary-color-400);
 }

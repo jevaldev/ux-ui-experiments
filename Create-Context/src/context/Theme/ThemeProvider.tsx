@@ -1,11 +1,8 @@
-import { useState, type ReactNode } from "react";
+import { useState } from "react";
 import { ThemeContext } from "./ThemeContext";
+import type { ProviderProps } from "../../types/ProviderProps";
 
-type ThemeProviderProps = {
-  children: ReactNode;
-};
-
-export const ThemeProvider = ({ children }: ThemeProviderProps) => {
+export const ThemeProvider = ({ children }: ProviderProps) => {
   const [theme, setTheme] = useState("light");
 
   const toggleTheme = () => {
